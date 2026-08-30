@@ -2,7 +2,16 @@
 name = "janus"
 version = "1.0.0"
 description = "Per-query routing between SQL and semantic retrieval over SEC filings"
+readme = "README.md"
 requires-python = ">=3.11,<3.13"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [{ name = "Bhavish Pothuraju", email = "bhavishpothuraju123@gmail.com" }]
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "typer>=0.12",
     "pydantic>=2.7",

@@ -58,4 +58,17 @@ uv venv --python 3.11 && uv pip install -e ".[dev]"
 
 ## License
 
-Research project. SEC filing data is public domain.
+Copyright (C) 2026 Bhavish Pothuraju.
+
+Janus is free software, licensed under the **GNU General Public License v3.0 or later**.
+You may redistribute and modify it under those terms. It is distributed WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See [`LICENSE`](LICENSE) for the full text, or
+<https://www.gnu.org/licenses/gpl-3.0.html>.
+
+GPLv3 is copyleft: anything distributed that builds on this code must also be released
+under the GPL. If you want the routing components usable inside closed-source work,
+that is the wrong licence and it should be changed before the repo goes public.
+
+SEC filing data ingested by this project is US public domain and is not covered by the
+above; the `data/` cache is not redistributed.
