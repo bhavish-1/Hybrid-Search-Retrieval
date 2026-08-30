@@ -1,0 +1,147 @@
+sector: Semiconductors & Semiconductor Equipment
+sector_rationale: Same-sector filers share vocabulary (wafer, foundry, design win, inventory digestion)
+  and report comparable metrics, so cross-company queries are meaningful. The 2022-2025 window spans both
+  the 2023 memory/analog downturn and the AI-accelerator boom, producing large real revenue swings in
+  both directions -- which is what makes type-D ('largest decline, and why?') queries have verifiable,
+  non-trivial answers.
+companies:
+- ticker: ADI
+  cik: 0000006281
+  name: ANALOG DEVICES INC
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1031'
+  filings_in_window: 19
+- ticker: AMAT
+  cik: 0000006951
+  name: APPLIED MATERIALS INC /DE
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1026'
+  filings_in_window: 19
+- ticker: AMD
+  cik: 0000002488
+  name: ADVANCED MICRO DEVICES INC
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1226'
+  filings_in_window: 19
+- ticker: AVGO
+  cik: 0001730168
+  name: Broadcom Inc.
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1101'
+  filings_in_window: 18
+- ticker: INTC
+  cik: 0000050863
+  name: INTEL CORP
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1227'
+  filings_in_window: 19
+- ticker: KLAC
+  cik: 0000319201
+  name: KLA CORP
+  sic: '3827'
+  sic_description: Optical Instruments & Lenses
+  fiscal_year_end: '0630'
+  filings_in_window: 19
+- ticker: LRCX
+  cik: 0000707549
+  name: LAM RESEARCH CORP
+  sic: '3559'
+  sic_description: Special Industry Machinery, NEC
+  fiscal_year_end: 0628
+  filings_in_window: 19
+- ticker: LSCC
+  cik: 0000855658
+  name: LATTICE SEMICONDUCTOR CORP
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '0102'
+  filings_in_window: 19
+- ticker: MCHP
+  cik: 0000827054
+  name: MICROCHIP TECHNOLOGY INC
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '0331'
+  filings_in_window: 19
+- ticker: MPWR
+  cik: 0001280452
+  name: MONOLITHIC POWER SYSTEMS, INC.
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1231'
+  filings_in_window: 19
+- ticker: MRVL
+  cik: 0001835632
+  name: Marvell Technology, Inc.
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '0130'
+  filings_in_window: 19
+- ticker: MU
+  cik: '0000723125'
+  name: MICRON TECHNOLOGY INC
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: 0903
+  filings_in_window: 19
+- ticker: NVDA
+  cik: 0001045810
+  name: NVIDIA CORP
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '0131'
+  filings_in_window: 19
+- ticker: NXPI
+  cik: '0001413447'
+  name: NXP Semiconductors N.V.
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1231'
+  filings_in_window: 19
+- ticker: 'ON'
+  cik: 0001097864
+  name: ON SEMICONDUCTOR CORP
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1231'
+  filings_in_window: 19
+- ticker: QCOM
+  cik: 0000804328
+  name: QUALCOMM INC/DE
+  sic: '3663'
+  sic_description: Radio & Tv Broadcasting & Communications Equipment
+  fiscal_year_end: 0927
+  filings_in_window: 19
+- ticker: QRVO
+  cik: 0001604778
+  name: Qorvo, Inc.
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '0403'
+  filings_in_window: 19
+- ticker: SWKS
+  cik: '0000004127'
+  name: SKYWORKS SOLUTIONS, INC.
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1002'
+  filings_in_window: 19
+- ticker: TER
+  cik: 0000097210
+  name: TERADYNE, INC
+  sic: '3825'
+  sic_description: Instruments For Meas & Testing of  Electricity & Elec Signals
+  fiscal_year_end: '1231'
+  filings_in_window: 19
+- ticker: TXN
+  cik: 0000097476
+  name: TEXAS INSTRUMENTS INC
+  sic: '3674'
+  sic_description: Semiconductors & Related Devices
+  fiscal_year_end: '1231'
+  filings_in_window: 19

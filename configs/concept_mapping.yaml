@@ -1,0 +1,181 @@
+# Concept-mapping layer (SPEC §4.3).
+#
+# The SAME economic quantity is tagged with different us-gaap concepts across filers
+# and across years. Measured across our 20 semiconductor filers (scripts/analyze_concepts.py):
+#   revenue -> RevenueFromContractWithCustomerExcludingAssessedTax (18/20 filers),
+#              Revenues (16/20), SalesRevenueNet (15/20)
+# All three are in active circulation. Without normalisation, a query for "revenue"
+# silently sees a third of the corpus.
+#
+# `sources` is an ORDERED priority list. For a given (company, period, unit) the first
+# concept present wins; the rest are recorded but not emitted, so a period is never
+# double-counted. `concept_raw` on every row preserves what the filer actually used.
+#
+# unit_kind: USD | USD_PER_SHARE | SHARES | PURE  (a guard against unit-mismatch joins)
+# period_type: duration (flow, e.g. revenue) | instant (stock, e.g. inventory)
+
+version: 3
+metrics:
+
+  # ---------- income statement (duration) ----------
+  revenue:
+    label: "Total revenue"
+    period_type: duration
+    unit_kind: USD
+    sources: [RevenueFromContractWithCustomerExcludingAssessedTax, Revenues, SalesRevenueNet, SalesRevenueGoodsNet]
+  cost_of_revenue:
+    label: "Cost of revenue"
+    period_type: duration
+    unit_kind: USD
+    sources: [CostOfRevenue, CostOfGoodsAndServicesSold, CostOfGoodsSold]
+  gross_profit:
+    label: "Gross profit"
+    period_type: duration
+    unit_kind: USD
+    sources: [GrossProfit]
+  research_and_development:
+    label: "Research and development expense"
+    period_type: duration
+    unit_kind: USD
+    sources: [ResearchAndDevelopmentExpense, ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost]
+  sganda:
+    label: "Selling, general and administrative expense"
+    period_type: duration
+    unit_kind: USD
+    sources: [SellingGeneralAndAdministrativeExpense, GeneralAndAdministrativeExpense]
+  operating_expenses:
+    label: "Total operating expenses"
+    period_type: duration
+    unit_kind: USD
+    sources: [OperatingExpenses, CostsAndExpenses]
+  operating_income:
+    label: "Operating income (loss)"
+    period_type: duration
+    unit_kind: USD
+    sources: [OperatingIncomeLoss]
+  pretax_income:
+    label: "Income before income taxes"
+    period_type: duration
+    unit_kind: USD
+    sources: [IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest, IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments]
+  income_tax_expense:
+    label: "Provision for income taxes"
+    period_type: duration
+    unit_kind: USD
+    sources: [IncomeTaxExpenseBenefit]
+  net_income:
+    label: "Net income (loss)"
+    period_type: duration
+    unit_kind: USD
+    sources: [NetIncomeLoss, ProfitLoss]
+  interest_expense:
+    label: "Interest expense"
+    period_type: duration
+    unit_kind: USD
+    sources: [InterestExpense, InterestExpenseDebt, InterestIncomeExpenseNet]
+  depreciation_amortization:
+    label: "Depreciation and amortization"
+    period_type: duration
+    unit_kind: USD
+    sources: [DepreciationDepletionAndAmortization, DepreciationAmortizationAndAccretionNet, DepreciationAndAmortization]
+  stock_compensation:
+    label: "Share-based compensation expense"
+    period_type: duration
+    unit_kind: USD
+    sources: [ShareBasedCompensation, AllocatedShareBasedCompensationExpense]
+
+  # ---------- per-share / share counts ----------
+  eps_basic:
+    label: "Basic earnings per share"
+    period_type: duration
+    unit_kind: USD_PER_SHARE
+    sources: [EarningsPerShareBasic, EarningsPerShareBasicAndDiluted]
+  eps_diluted:
+    label: "Diluted earnings per share"
+    period_type: duration
+    unit_kind: USD_PER_SHARE
+    sources: [EarningsPerShareDiluted, EarningsPerShareBasicAndDiluted]
+  shares_diluted:
+    label: "Weighted average diluted shares outstanding"
+    period_type: duration
+    unit_kind: SHARES
+    sources: [WeightedAverageNumberOfDilutedSharesOutstanding]
+  dividends_per_share:
+    label: "Dividends declared per share"
+    period_type: duration
+    unit_kind: USD_PER_SHARE
+    sources: [CommonStockDividendsPerShareDeclared, CommonStockDividendsPerShareCashPaid]
+
+  # ---------- cash flow (duration) ----------
+  operating_cash_flow:
+    label: "Net cash provided by operating activities"
+    period_type: duration
+    unit_kind: USD
+    sources: [NetCashProvidedByUsedInOperatingActivities, NetCashProvidedByUsedInOperatingActivitiesContinuingOperations]
+  capex:
+    label: "Purchases of property, plant and equipment"
+    period_type: duration
+    unit_kind: USD
+    sources: [PaymentsToAcquirePropertyPlantAndEquipment, PaymentsToAcquireProductiveAssets]
+  buybacks:
+    label: "Payments for repurchase of common stock"
+    period_type: duration
+    unit_kind: USD
+    sources: [PaymentsForRepurchaseOfCommonStock]
+  dividends_paid:
+    label: "Payments of dividends"
+    period_type: duration
+    unit_kind: USD
+    sources: [PaymentsOfDividendsCommonStock, PaymentsOfDividends]
+
+  # ---------- balance sheet (instant) ----------
+  cash_and_equivalents:
+    label: "Cash and cash equivalents"
+    period_type: instant
+    unit_kind: USD
+    sources: [CashAndCashEquivalentsAtCarryingValue]
+  short_term_investments:
+    label: "Short-term investments"
+    period_type: instant
+    unit_kind: USD
+    sources: [ShortTermInvestments, AvailableForSaleSecuritiesDebtSecuritiesCurrent, MarketableSecuritiesCurrent]
+  inventory:
+    label: "Inventories, net"
+    period_type: instant
+    unit_kind: USD
+    sources: [InventoryNet]
+  accounts_receivable:
+    label: "Accounts receivable, net"
+    period_type: instant
+    unit_kind: USD
+    sources: [AccountsReceivableNetCurrent, ReceivablesNetCurrent]
+  total_assets:
+    label: "Total assets"
+    period_type: instant
+    unit_kind: USD
+    sources: [Assets]
+  total_liabilities:
+    label: "Total liabilities"
+    period_type: instant
+    unit_kind: USD
+    sources: [Liabilities]
+  goodwill:
+    label: "Goodwill"
+    period_type: instant
+    unit_kind: USD
+    sources: [Goodwill]
+  long_term_debt:
+    label: "Long-term debt, noncurrent"
+    period_type: instant
+    unit_kind: USD
+    sources: [LongTermDebtNoncurrent, LongTermDebt]
+  stockholders_equity:
+    label: "Total stockholders' equity"
+    period_type: instant
+    unit_kind: USD
+    sources: [StockholdersEquity, StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest]
+  ppe_net:
+    label: "Property, plant and equipment, net"
+    period_type: instant
+    unit_kind: USD
+    sources: [PropertyPlantAndEquipmentNet]

@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Cached SEC artifacts are NOT committed (re-fetchable, large).
+data/cache/
+data/raw/
+models/
+
+# Everything in data/ is ignored except the labelled query set + checksums.
+data/*
+!data/queries.jsonl
+!data/router_training.jsonl
+!data/checksums.json
+!data/.gitkeep
