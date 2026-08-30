@@ -1,4 +1,4 @@
-# Janus
+# Hybrid-Search-Retrieval
 
 **Per-query routing between SQL and semantic retrieval over SEC filings — benchmarked
 against always-both and an oracle upper bound.**
